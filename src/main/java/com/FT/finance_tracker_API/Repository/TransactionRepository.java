@@ -15,38 +15,30 @@ import java.util.List;
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
     // --------BASIC QUERIES-----------
+
     List<Transaction> findByUser(User user);
-
     List<Transaction> findByUserId(Long userId);
-
     List<Transaction> findByUserAndType(User user, TransactionType type);
-
     List<Transaction> findByUserAndDateBetween(User user, LocalDate start, LocalDate end);
-
     List<Transaction> findByCategoryId(Long categoryId);
 
     // ------ADVANCED FILTERING QUERIES-----------------
 
     List<Transaction> findByUserAndAmountGreaterThan(User user,Double amount);
-
     List<Transaction> findByUserAndAmountLessThan(User user, Double amount);
-
     List<Transaction> findByUserAndAmountBetween(User user, Double min, Double max);
-
     List<Transaction> findByUserAndDateGreaterThanEqual(User user, LocalDate date);
-
     List<Transaction> findByUserAndDateLessThanEqual(User user, LocalDate date);
 
     //------------SORTING QUERIES----------------
+
     List<Transaction> findByUserOrderByDateDesc(User user);
-
     List<Transaction> findByUserOrderByAmountAsc(User user);
-
     List<Transaction> findByUserOrderByAmountDesc(User user);
 
     //--------------PAGINATION-------------------
-    Page<Transaction> findByUser(User user, Pageable pageable);
 
+    Page<Transaction> findByUser(User user, Pageable pageable);
     Page<Transaction> findByUserAndType(User user, TransactionType type, Pageable pageable);
 
     //-------------LATEST TRANSACTIONS--------------
